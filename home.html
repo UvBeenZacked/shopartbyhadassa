@@ -1,1 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery – Artful Visions</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Artful Visions Gallery</h1>
+    <p>Explore our collection and enquire about your favorites</p>
+  </header>
+
+  <section class="gallery">
+    <div class="painting">
+      <img src="images/painting1.jpg" alt="Sunset Serenity">
+      <h3>Sunset Serenity</h3>
+      <button onclick="openModal()">Enquire</button>
+    </div>
+
+    <div class="painting">
+      <img src="images/painting2.jpg" alt="Mystic Hills">
+      <h3>Mystic Hills</h3>
+      <button onclick="openModal()">Enquire</button>
+    </div>
+
+    <div class="painting">
+      <img src="images/painting3.jpg" alt="Ocean Dreams">
+      <h3>Ocean Dreams</h3>
+      <button onclick="openModal()">Enquire</button>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <iframe src="https://docs.google.com/forms/d/e/YOUR_GOOGLE_FORM_ID/viewform?embedded=true" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Artful Visions. All rights reserved.
+  </footer>
+
+  <script>
+    function openModal() {
+      document.getElementById("modal").style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      if (event.target == document.getElementById("modal")) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>
 
