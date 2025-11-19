@@ -222,6 +222,20 @@ modalBackdrop.onclick = e=>{ if(e.target===modalBackdrop) hideModal(); };
 /* SCROLL-BASED BOUNCE ANIMATION — SMOOTHER, MORE PROFESSIONAL */
 let lastY = window.scrollY;
 const cards = [...document.querySelectorAll('.card')];
+
+// Ensure top-row cards are immediately visible with no animation
+function resetTopRow(){
+cards.forEach((card, i)=>{
+const isMobile = window.innerWidth < 620;
+const topRow = isMobile ? i===0 : i<3;
+if(topRow){
+card.style.opacity = 1;
+card.style.transform = 'translateY(0) scale(1)';
+card.style.transition = 'none';
+}
+});
+}
+resetTopRow();
 let ticking = false;
 
 function animateCards(){
