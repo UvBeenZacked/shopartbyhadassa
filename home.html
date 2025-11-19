@@ -86,8 +86,8 @@ const products = Array.from({length:NUM_ITEMS},(_,i)=>({
   title: `Original Oil Painting #${i+1}`,
   price: `${250 + (i%10)*50} USD`,
   images: imagesFor(i),
-  desc: `Beautiful original oil painting by Hadassa. Size, framing and shipping options available. Painting #${i+1}.`
-}));
+  desc: `Beautiful original oil painting by Hadassa. Size, framing and shipping options available. Painting #${i+1}.
+` }));
 
 // Override product 1 with custom content
 products[0] = {
@@ -95,12 +95,23 @@ products[0] = {
   title: 'Africa',
   price: '£600',
   images: [
-    'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhGnekAdHCMtSjMtk5sy2zaPAgknaM9NLJoENJX8ji8E2OK4UdimmKpcHnmOi4jVYbHQXj0iEt8tS-kt25O83RAXW8bsmuGNQ1QCmGgoJHbvCiUihfdzy-J2SnIMWTNYXbmqwmeM6yb-1c1s38pcbyHei082dOxq_UZZ4eUTGUEyWKbnLRbndYUWDLT4YMb/s320/IMG_0975.png',
-    'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhJavycsvnNYBJvbPFFHfqGUPcWzYkRqOB8X08zgv5lyJoh626251mz35ZbDSYFUhLnSBt4Te_JVs3GizRBWp60Lj2JEmYDCpp0BWdue10pP_IeHr9T70hjn4BA4SbdQ1L-uqljhjJdCtKWgVK6Ksmv8HZTnqG0MjlC8cmab7Rdk5xhIDQhkdzHkJu-DeAt/s320/IMG_0973%20(1).png',
-    'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiTsrct6Iahir7TwNESx84xo8TA2WXq3FuJ7pvweg6O5h4PbohkUxLd9f__5QIh_fo_tago0FHU6GJmo7ZpyrtV7lqV8e_fnZr9hkaZOK5lNz7iAmTtY_qpvvwoV28oiUnDfFaeRwG52eJGGxzm1MtJbJ28xXRPrNggaSstrNEggkSTI15i-Q7KwgOEhkYY/s320/IMG_0970%20(1).png',
-    'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi2uHPy47O0EhfzGzQMQGIZdw3lZup_kaOaDD_LW55BK8T6P4mlBUEBhQnCt2TRmWqNjCjsytVPtSsCdC9wr5xObSmMyI_BZgkQ5T-JPKYCa83VqDHBaX_XjzpFwVeS9pQAU_dPzHdZqqZcQNmRbbLooIpBKc0601gRBnqw7gG-WxamsbxOCLscd3aJiK5p/s320/IMG_0972.png'
+    'https://picsum.photos/seed/201/500/375',
+    'https://picsum.photos/seed/202/500/375',
+    'https://picsum.photos/seed/203/500/375'
   ],
-  desc: 'A vibrant trio of oil paintings, portraying colour, movement and everyday life in Africa. Together these pieces bring warmth, emotion, and dymnamic colour to any space. Consists of three paintings each measuring 30-30cm.'
+  desc: 'A vibrant trio of oil paintings, portraying colour, movement and everyday life in Africa. Together these pieces bring warmth, emotion, and dynamic colour to any space. Consists of three separate panels.'
+};
+
+// Override product 2 (Original Oil Painting #2) with requested content
+products[1] = {
+  id: 2,
+  title: 'Kotel',
+  price: '£250',
+  images: [
+    'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh-cW7D4XZJzfnXuNQU6a8lf6JtC3auFrkhvWPVHfzIlE8cTOFBUf7QsIPSDrjUi9zuAV6c14zWEIprMB9GCr1ppuNQwgJZ7OVxrae0kZ46N_lOrzcFknCkDK9KSoYtgKmcBueWSJBHZzH1ZCGewnTQmTO9Svl1aRERlfRgROdeVgyz-2txNJyhFFQhGEmY/s577/Untitled%20design.png',
+    'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjO7aVYgdp-vrm8oBdAaxJArGgAODI6znUM5oYdneMpmRaONyCrVlvWiJykzPKC4UkIGI7WWvj-H43mA3dnR-0oAsLRbHC_pP18lKeUELgvit7D7q0P86nS3ZqWgwQ3MP0_93uK7kgGxlYxLMPPdWI-62VYtBewYp7EzKrjh5dmVqk-Pn2d7GbkdKC3yXld/s577/Untitled%20design%20(1).png'
+  ],
+  desc: 'This oil painting portrays the western wall, capturing the ancient stone\'s timeless character. At the base of the wall, gentle figures stand in prayer, evoking the sense of history and connection that defines this holy place. A serene and meaningful piece that brings the essence of jerusalem into any space. Dimensions (unframed) 61x30cm.'
 };
 
 products.forEach(prod=>{
