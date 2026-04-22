@@ -151,7 +151,28 @@ images: [
 desc: 'This elegant still life painting features a stack of vintage books leaning against a soft blue background, with a fresh plate of apples and pears adding a bright, inviting touch.'
 };
 
-products.forEach(prod=>{
+products.forEach((prod, i)=>{
+const card = document.createElement('article');
+card.className = 'card';
+card.innerHTML = `
+<div class="slideshow" data-index="${i}" data-img="0">
+<img src="${prod.images[0]}" alt="${prod.title} image" />
+<div class="slide-controls">
+<button class="ctrl prev">◀</button>
+<button class="ctrl next">▶</button>
+</div>
+</div>
+<div>
+<div class="title">${prod.title}</div>
+<div class="meta">${prod.price}</div>
+</div>
+<button class="more-btn" data-index="${i}">More details</button>
+`;
+gallery.appendChild(card);
+});
+
+
+
 const card = document.createElement('article');
 card.className = 'card';
 card.innerHTML = `
@@ -172,7 +193,40 @@ gallery.appendChild(card);
 });
 
 /* SLIDESHOW */
-gallery.addEventListener('click',e=>{
+
+
+
+gallery.addEventListener('click', e => {
+
+const slideshow = e.target.closest('.slideshow');
+
+if(slideshow){
+const index = parseInt(slideshow.dataset.index);
+const prod = products[index];
+let imgIndex = parseInt(slideshow.dataset.img);
+
+// PREV
+if(e.target.classList.contains('prev')){
+imgIndex = (imgIndex + prod.images.length - 1) % prod.images.length;
+slideshow.querySelector('img').src = prod.images[imgIndex];
+slideshow.dataset.img = imgIndex;
+}
+
+// NEXT
+if(e.target.classList.contains('next')){
+imgIndex = (imgIndex + 1) % prod.images.length;
+slideshow.querySelector('img').src = prod.images[imgIndex];
+slideshow.dataset.img = imgIndex;
+}
+}
+
+// MODAL
+if(e.target.classList.contains('more-btn')){
+showModal(parseInt(e.target.dataset.index));
+}
+
+});
+
 const slideshow = e.target.closest('.slideshow');
 if(slideshow){
 const prodId = parseInt(slideshow.dataset.id);
@@ -202,8 +256,10 @@ const modalTitle = document.getElementById('modalTitle');
 const modalDesc = document.getElementById('modalDesc');
 let currentProd = null, imgIdx = 0;
 
-function showModal(prodId){
-currentProd = products.find(p=>p.id===prodId);
+
+function showModal(index){
+currentProd = products[index];  
+  
 imgIdx = 0;
 updateModal();
 modalBackdrop.style.display = 'flex';
