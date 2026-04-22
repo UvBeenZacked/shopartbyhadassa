@@ -9,6 +9,13 @@ body {
 
   
 }
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(250, 248, 245, 0.75);
+  z-index: -1;
+}
 
 header {
   background-color: #fff;
