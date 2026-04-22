@@ -1,11 +1,8 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-image: url("https://iili.io/B47KH0u.jpg")
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background: url("https://iili.io/B47KH0u.jpg")
+  center/cover no-repeat fixed;
 
   
 }
