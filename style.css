@@ -1,8 +1,13 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #fdf6e3;
-  color: #333;
+  background-image: url("https://iili.io/B47KH0u.jpg")
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  
 }
 
 header {
