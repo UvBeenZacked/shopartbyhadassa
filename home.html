@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
  <style>
-body {
+body { 
 margin: 0;
 font-family: Arial, sans-serif;
 
@@ -30,6 +30,27 @@ z-index: -1;
 <style>
 :root{
 --bg:#faf8f5; --card:#ffffff; --muted:#6b6b6b; --accent:#8b5cf6;
+}
+
+ .footer {
+  background: #222;
+  color: var(--muted);
+  padding: 32px 0 24px 0;
+  margin-top: 42px;
+  text-align: center;
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  border-top: 1.5px solid #e6e2f4;
+}
+.footer a {
+  color: var(--accent);
+  text-decoration: underline;
+  padding: 0 4px;
+  transition: color 0.2s;
+}
+.footer a:hover {
+  color: #6c35d2;
+  text-decoration: none;
 }
 body{font-family:Inter,Arial,sans-serif;background:var(--bg);margin:0;overflow-x:hidden;}
 .container{max-width:1200px;margin:0 auto;padding:32px;}
@@ -458,10 +479,11 @@ window.addEventListener('resize', animateCards);
 animateCards();
 
 </script>
-   <footer>
-    &copy; 2025 Art By Hadassa. All rights reserved.
-    <br>
-    Click <a href="mailto:bentziyaari@gmail.com">here</a> to email us and <a href="https://wa.me/447931543499">here</a> for whatsapp
-  </footer>
+   <footer class="footer">
+  &copy; 2025 Art By Hadassa. All rights reserved.<br>
+  <a href="mailto:bentziyaari@gmail.com">Email us</a>
+  &nbsp;&bull;&nbsp;
+  <a href="https://wa.me/447931543499">WhatsApp</a>
+</footer>
 </body>
 </html>
