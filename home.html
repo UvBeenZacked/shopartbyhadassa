@@ -83,35 +83,41 @@ opacity:0;transform:translateY(40px) scale(0.97);transition:transform 0.35s ease
 
 <!-- Modal -->
 <div id="modalBackdrop" class="modal-backdrop" aria-modal="true">
-<div class="modal">
-<button id="closeModal" class="close-x" aria-label="Close dialog">✕</button>
-<div class="modal-body">
-<div class="images">
-<img id="modalImage" src="" alt="Product image"/>
-<div class="mod-controls">
-<button id="modalPrev" class="ctrl">◀</button>
-<button id="modalNext" class="ctrl">▶</button>
+  <div class="modal">
+    <button id="closeModal" class="close-x" aria-label="Close dialog">✕</button>
+    <div class="modal-body">
+      <div class="images">
+        <img id="modalImage" src="" alt="Product image"/>
+        <div class="mod-controls">
+          <button id="modalPrev" class="ctrl">◀</button>
+          <button id="modalNext" class="ctrl">▶</button>
+        </div>
+      </div>
+      <div class="details">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+        <div class="actions">
+          <a
+            id="contactBtn"
+            class="btn btn-contact"
+            href="https://wa.me/[447931543499]?text=[
+              Hello%20Hadassa.%20My%20nam
+              e%20is%20[Your%20Name].%20I%20would%20like%20to%20enquire%20about%20[Artwork%20Title]%20as%20directed%20on%20your%20site.%20Is%20this%20piece%20still%20available?%20Please%2
+              0let%20me%20know%20the%20price%20and%20shipping%20details.%0AThank%20you.
+            ]"
+            target="_blank"
+            >WhatsApp Us</a>
+          <a
+            id="emailBtn"
+            class="btn btn-contact"
+            href="mailto:bentziyaari@gmail.com"
+            >Email Us</a>
+          <button id="modalCloseBtn" class="btn btn-close">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-<div class="details">
-<h2 id="modalTitle"></h2>
-<p id="modalDesc"></p>
-<div class="actions">
-<a id="contactBtn" class="btn btn-contact" href="https://wa.me/[447931543499]?text=[
-
- Hello%20Hadassa.%20My%20nam
- e%20is%20[Your%20Name].%20I%20would%20like%20to%20enquire%20about%20[Artwork%20Title]%20as%20directed%20on%20your%20
- site.%20Is%20this%20piece%20still%20available?%20Please%2
- 0let%20me%20know%20the%20price%20and%20shipping%20details.%0AThank%20you.
- ]">Contact</a>
- 
-<button id="modalCloseBtn" class="btn btn-close">Close</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-
 <script>
 const NUM_ITEMS = 15;
 const gallery = document.getElementById('gallery');
