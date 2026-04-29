@@ -151,3 +151,11 @@ footer {
 .close:hover {
   color: black;
 }
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #777;
+  font-size: 0.9em;
+  background-color: #fff;
+  margin-top: 60px;
+}
