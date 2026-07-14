@@ -360,7 +360,7 @@ images: [
 'https://iili.io/BZh5o1S.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'This painting portrays the serene coastline of the Algarve, with calm turquoise waters, a distant lighthouse, and sunlit buildings nestled among greenery, creating a peaceful coastal atmosphere[...]
+desc: 'This painting portrays the serene coastline of the Algarve, with calm turquoise waters, a distant lighthouse, and sunlit buildings nestled among greenery, creating a peaceful coastal atmos[...]
 };
 
 productsMap[9] = {
@@ -658,7 +658,6 @@ const modalBackdrop = document.getElementById('modalBackdrop');
 const modalImage = document.getElementById('modalImage');
 const modalTitle = document.getElementById('modalTitle');
 const modalDesc = document.getElementById('modalDesc');
-const footer = document.querySelector('.footer');
 let currentProd = null, imgIdx = 0;
 
 function showModal(prodId){
@@ -667,7 +666,8 @@ imgIdx = 0;
 updateModal();
 modalBackdrop.style.display = 'flex';
 document.body.style.overflow='hidden';
-footer.classList.add('hidden');
+const footer = document.querySelector('.footer');
+if(footer) footer.classList.add('hidden');
 }
 function updateModal(){
 modalImage.src = currentProd.images[imgIdx];
@@ -680,7 +680,8 @@ document.getElementById('modalCloseBtn').onclick = hideModal;
 function hideModal(){
 modalBackdrop.style.display='none';
 document.body.style.overflow='';
-footer.classList.remove('hidden');
+const footer = document.querySelector('.footer');
+if(footer) footer.classList.remove('hidden');
 }
 document.getElementById('modalPrev').onclick = ()=>{
 imgIdx = (imgIdx + currentProd.images.length - 1) % currentProd.images.length;
