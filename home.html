@@ -23,7 +23,7 @@ z-index: -1;
 </style>
 
 <head>
-<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAIn0lEQVR4AXRXeXBV1R3+vvsSICEmYkAgVq1oS2QpglhLlZYZxuIWdXTamdaZtjoVS8QOoLZ/tdPpYBeV0c4Ua[...[...]
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAIn0lEQVR4AXRXeXBV1R3+vvsSICEmYkAgVq1oS2QpglhLlZYZxuIWdXTamdaZtjoVS8QOoLZ/tdPpYBeV0c4Ua[...[[...]"/>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>The Gallery</title>
@@ -112,12 +112,12 @@ opacity:0;transform:translateY(40px) scale(0.97);transition:transform 0.35s ease
 .modal .mod-controls{display:flex;justify-content:space-between;margin:7px 0;}
 .modal .details{flex:1;min-width:0;overflow-y:auto;max-height:calc(90vh - 60px);}
 .close-x{position:absolute;right:14px;top:12px;background:transparent;border:0;font-size:24px;cursor:pointer;color:#999;z-index:10;}
-.modal h2{margin-top:6px;margin-bottom:10px;font-size:clamp(18px, 5vw, 24px);}
+.modal h2{margin-top:6px;margin-bottom:10px;font-size:clamp(18px, 5vw, 24px);} 
 .modal p{color:var(--muted);font-size:clamp(13px, 4vw, 15px);line-height:1.5;}
 .modal .actions{display:flex;gap:10px;margin-top:15px;flex-wrap:wrap;}
-.btn{padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-size:clamp(12px, 3vw, 14px);}
-.btn-contact{background:#10b981;color:#fff;}
-.btn-close{background:var(--card);}
+.btn{padding:10px 14px;border-radius:8px;border:0;cursor:pointer;font-size:clamp(12px, 3vw, 14px);} 
+.btn-contact{background:#10b981;color:#fff;} 
+.btn-close{background:var(--card);} 
 
 /* Tablet and below */
 @media (max-width:768px) {
@@ -217,8 +217,8 @@ letter-spacing: 0.01em;
 <a
 id="contactBtn"
 class="btn btn-contact"
-href="https://wa.me/447931543499?text=Hello%20Hadassa.%20My%20name%20is%20[Your%20Name].%20I%20would%20like%20to%20enquire%20about%20[Artwork%20Title]%20as%20directed%20on%20your%20si[...]
-          target="_blank"
+href="https://wa.me/447931543499?text=Hello%20Hadassa.%20My%20name%20is%20[Your%20Name].%20I%20would%20like%20to%20enquire%20about%20[Artwork%20Title]%20as%20directed%20on%20your%20site"
+           target="_blank"
 >WhatsApp Us</a>
 <a
 id="emailBtn"
@@ -232,7 +232,8 @@ href="mailto:hnlb31@gmail.com"
 </div>
 </div>
 <script>
-const NUM_ITEMS = 15;
+// Build a robust products list: start with default placeholders then override with explicit entries.
+const NUM_ITEMS = 30; // increased to cover all manual entries
 const gallery = document.getElementById('gallery');
 
 function imagesFor(i){
@@ -244,15 +245,21 @@ return [
 ];
 }
 
-const products = Array.from({length:NUM_ITEMS},(_,i)=>({
-id: i+1,
-title: `Original Oil Painting #${i+1}`,
+// Use a map keyed by id to avoid sparse arrays and to allow overrides
+const productsMap = {};
+for(let i=0;i<NUM_ITEMS;i++){
+const id = i+1;
+productsMap[id] = {
+id,
+title: `Original Oil Painting #${id}`,
 price: `£POA`,
 images: imagesFor(i),
-desc: `Elegant. Timeless. Each a unique masterpiece. Painting #${i+1}.`
-}));
+desc: `Elegant. Timeless. Each a unique masterpiece. Painting #${id}.`
+};
+}
 
-products[0] = {
+// Now override with the specific product entries (keep descriptions as HTML where needed)
+productsMap[1] = {
 id: 1,
 title: 'Africa',
 price: '£POA',
@@ -266,7 +273,7 @@ images: [
 desc: 'These three paintings form a vivid homage to African villages and life.'
 };
 
-products[1] = {
+productsMap[2] = {
 id: 2,
 title: 'Kotel',
 price: '£POA',
@@ -274,10 +281,10 @@ images: [
 'https://iili.io/BZW3kHF.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'This painting evokes a quiet reverance of the western wall, as if time itself stands still, inviting the viewer to pause, reflect, and connect with the deep spiritual history held within its stones. '
+desc: 'This painting evokes a quiet reverence of the western wall, inviting the viewer to pause, reflect, and connect with the deep spiritual history held within it.'
 };
 
-products[2] = {
+productsMap[3] = {
 id: 3,
 title: 'Jaffa',
 price: '£POA',
@@ -288,7 +295,7 @@ images: [
 desc: 'This vibrant oil painting evokes the beauty of Jaffa, perfect for your home or any elegant setting.'
 };
 
-products[3] = {
+productsMap[4] = {
 id: 4,
 title: 'Library Still Life',
 price: '£POA',
@@ -299,7 +306,7 @@ images: [
 desc: 'This elegant still life painting features a stack of vintage books leaning against a soft blue background, with a fresh plate of apples and pears adding a bright, inviting touch.'
 };
 
-products[4] = {
+productsMap[5] = {
 id: 5,
 title: 'Shop Window Hats',
 price: '£POA',
@@ -307,10 +314,11 @@ images: [
 'https://iili.io/BZMT1S4.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'An elegant woman in a bright red dress strolls past abstract urban buildings. DIMENSIONS: 49x39cm Including Frame .'
+// keep line breaks as HTML; modal will use innerHTML
+desc: 'An elegant woman in a bright red dress strolls past abstract urban buildings.<br>DIMENSIONS: 49x39cm Including Frame.'
 };
 
-products[5] = {
+productsMap[6] = {
 id: 6,
 title: 'Boats Along French River',
 price: '£POA',
@@ -318,10 +326,10 @@ images: [
 'https://iili.io/f29nC1S.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'Sailboats on calm blue water, with small houses and trees along the shore.    DIMENSIONS: 61x46cm Including Frame .'
+desc: 'Sailboats on calm blue water, with small houses and trees along the shore.<br>DIMENSIONS: 61x46cm Including Frame.'
 };
 
-products[6] = {
+productsMap[7] = {
 id: 7,
 title: 'Paris In The Rain',
 price: '£POA',
@@ -329,11 +337,10 @@ images: [
 'https://iili.io/BZVNZSj.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'A rainy city street, with silhouetted figures holding umbrellas as they walk.    DIMENSIONS: 61x51cm Including Frame .'
+desc: 'A rainy city street, with silhouetted figures holding umbrellas as they walk.<br>DIMENSIONS: 61x51cm Including Frame.'
 };
 
-
-products[7] = {
+productsMap[8] = {
 id: 8,
 title: 'Lighthouse Of Algarve',
 price: '£POA',
@@ -341,10 +348,10 @@ images: [
 'https://iili.io/BZh5o1S.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'This painting portrays the serene coastline of the Algarve, with calm turquoise waters, a distant lighthouse, and sunlit buildings nestled among greenery, creating a peaceful coastal atmosphere. DIMENSIONS: 51x41cm Including Frame .'
-}; 
+desc: 'This painting portrays the serene coastline of the Algarve, with calm turquoise waters, a distant lighthouse, and sunlit buildings nestled among greenery, creating a peaceful coastal atmosphere.'
+};
 
-products[8] = {
+productsMap[9] = {
 id: 9,
 title: 'Shop Window Dresses',
 price: '£POA',
@@ -352,11 +359,10 @@ images: [
 'https://iili.io/BZMTFwP.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'DIMENSIONS: 49x39cm Including Frame .'
-desc: 'A graceful figure in a stylish boutique street scene. Creating a warm sophisticated design.' <br>  'DIMENSIONS: 49x39cm Including Frame .'
-}; 
+desc: 'A graceful figure in a stylish boutique street scene, creating a warm sophisticated design.<br>DIMENSIONS: 49x39cm Including Frame.'
+};
 
-products[9] = {
+productsMap[10] = {
 id: 10,
 title: 'Rabbi In Thought',
 price: '£POA',
@@ -364,10 +370,10 @@ images: [
 'https://iili.io/fdy0sqX.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'DIMENSIONS: 41x31cm Including Frame .'
-};  
+desc: 'DIMENSIONS: 41x31cm Including Frame.'
+};
 
-products[10] = {
+productsMap[11] = {
 id: 11,
 title: 'View From Window',
 price: '£POA',
@@ -375,10 +381,10 @@ images: [
 'https://iili.io/f2HQJ2I.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'DIMENSIONS: 61x51cm Including Frame .'
-}; 
+desc: 'DIMENSIONS: 61x51cm Including Frame.'
+};
 
-products[11] = {
+productsMap[12] = {
 id: 12,
 title: 'Amalfi Coast',
 price: '£POA',
@@ -386,10 +392,10 @@ images: [
 'https://iili.io/BZW3OS1.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'DIMENSIONS: 60x50cm Including Frame .'
-};  
+desc: 'DIMENSIONS: 60x50cm Including Frame.'
+};
 
-products[12] = {
+productsMap[13] = {
 id: 13,
 title: 'Jews In The Old City',
 price: '£POA',
@@ -397,10 +403,10 @@ images: [
 'https://iili.io/fdy0Pst.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'DIMENSIONS: 40x30cm Including Frame .'
-};  
+desc: 'DIMENSIONS: 40x30cm Including Frame.'
+};
 
-products[13] = {
+productsMap[14] = {
 id: 14,
 title: 'Autumn Walk',
 price: '£POA',
@@ -408,11 +414,10 @@ images: [
 'https://iili.io/BZMT3AB.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'DIMENSIONS: 70x50cm Including Frame .'
-};  
+desc: 'DIMENSIONS: 70x50cm Including Frame.'
+};
 
-
-products[14] = {
+productsMap[15] = {
 id: 15,
 title: 'Paris Cafe',
 price: '£POA',
@@ -420,10 +425,10 @@ images: [
 'https://iili.io/BZh5fIf.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'DIMENSIONS: 60x50cm Including Frame .'
-};  
+desc: 'DIMENSIONS: 60x50cm Including Frame.'
+};
 
-products[15] = {
+productsMap[16] = {
 id: 16,
 title: 'Chassid In Prayer',
 price: '£POA',
@@ -431,10 +436,10 @@ images: [
 'https://iili.io/BZj1dqG.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'Enquire For Details .'
-};  
+desc: 'Enquire For Details.'
+};
 
-products[16] = {
+productsMap[17] = {
 id: 17,
 title: 'Trees',
 price: '£POA',
@@ -442,22 +447,10 @@ images: [
 'https://iili.io/BsKgBIa.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'Enquire For Details .'
-};  
+desc: 'Enquire For Details.'
+};
 
-
-products[28] = {
-id: 27,
-title: 'Safed',
-price: '£POA',
-images: [
-'https://iili.io/BZMTqoF.png',
-'https://iili.io/fdDbGwv.png'
-],
-desc: 'Dimensions: 70cm x 50cm Inlcuding Frame .'
-};  
-
-products[17] = {
+productsMap[18] = {
 id: 18,
 title: 'Study Of Chrysanthemums',
 price: '£POA',
@@ -465,10 +458,10 @@ images: [
 'https://iili.io/BZh53es.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'Dimensions: 60cm x 50cm Including Frame .'
-};  
+desc: 'Dimensions: 60cm x 50cm Including Frame.'
+};
 
-products[18] = {
+productsMap[19] = {
 id: 19,
 title: 'Venice',
 price: '£POA',
@@ -476,10 +469,10 @@ images: [
 'https://iili.io/BZh5FmG.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'Dimensions: 74cm x 50cm Including Frame .'
-};  
+desc: 'Dimensions: 74cm x 50cm Including Frame.'
+};
 
-products[19] = {
+productsMap[20] = {
 id: 20,
 title: 'Pears',
 price: '£POA',
@@ -487,80 +480,10 @@ images: [
 'https://iili.io/BZh527n.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'Dimensions: 40cm x 30cm Including Frame .'
-};  
+desc: 'Dimensions: 40cm x 30cm Including Frame.'
+};
 
-products[29] = {
-id: 30,
-title: 'Blue Moored By The Jetty',
-price: '£POA',
-images: [
-'https://iili.io/CGTWtoB.jpg',
-'https://iili.io/fdDbGwv.png'
-],
-desc: 'Dimensions: 45cm x 36cm .'
-};  
-
-products[21] = {
-id: 22,
-title: 'Starry Night Cafe',
-price: '£POA',
-images: [
-'https://iili.io/BZh5xr7.png',
-'https://iili.io/fdDbGwv.png'
-],
-desc: 'Dimensions: 45cm x 35cm Including Frame .'
-};  
-
-
-
-
-products[24] = {
-id: 25,
-title: 'Village',
-price: '£POA',
-images: [
-'https://iili.io/BZjz7oB.png',
-'https://iili.io/fdDbGwv.png'
-],
-desc: 'Enquire for details .'
-};  
-
-
-products[25] = {
-id: 26,
-title: 'Lillies',
-price: '£POA',
-images: [
-'https://iili.io/BZj121f.png',
-'https://iili.io/fdDbGwv.png'
-],
-desc: 'Dimensions: 60cm x 50cm .'
-};  
-
-products[26] = {
-id: 27,
-title: 'Sunflowers',
-price: '£POA',
-images: [
-'https://iili.io/BZh5I29.png',
-'https://iili.io/fdDbGwv.png'
-],
-desc: 'Dimensions: 45cm x 35cm Including Frame .'
-};  
-
-products[27] = {
-id: 28,
-title: 'Rabbi Leaning On Walking Stick',
-price: '£POA',
-images: [
-'https://iili.io/BZjwM41.png',
-'https://iili.io/fdDbGwv.png'
-],
-desc: 'Dimensions: 4ocm x 30cm .'
-}; 
-
-products[20] = {
+productsMap[21] = {
 id: 21,
 title: 'Lamposts',
 price: '£POA',
@@ -568,23 +491,21 @@ images: [
 'https://iili.io/BZjzYMP.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'Dimensions: 45cm x 35cm Including Frame .'
-};  
+desc: 'Dimensions: 45cm x 35cm Including Frame.'
+};
 
-
-
-products[23] = {
-id: 24,
-title: 'Market Scene Safed',
+productsMap[22] = {
+id: 22,
+title: 'Starry Night Cafe',
 price: '£POA',
 images: [
-'https://iili.io/BZjzaP1.png',
+'https://iili.io/BZh5xr7.png',
 'https://iili.io/fdDbGwv.png'
 ],
-desc: 'Enquire for details.'
-};  
+desc: 'Dimensions: 45cm x 35cm Including Frame.'
+};
 
-products[22] = {
+productsMap[23] = {
 id: 23,
 title: 'Spring Morning In Paris',
 price: '£POA',
@@ -593,9 +514,89 @@ images: [
 'https://iili.io/fdDbGwv.png'
 ],
 desc: 'Enquire for details.'
-};  
+};
 
+productsMap[24] = {
+id: 24,
+title: 'Market Scene Safed',
+price: '£POA',
+images: [
+'https://iili.io/BZjzaP1.png',
+'https://iili.io/fdDbGwv.png'
+],
+desc: 'Enquire for details.'
+};
 
+productsMap[25] = {
+id: 25,
+title: 'Village',
+price: '£POA',
+images: [
+'https://iili.io/BZjz7oB.png',
+'https://iili.io/fdDbGwv.png'
+],
+desc: 'Enquire for details.'
+};
+
+productsMap[26] = {
+id: 26,
+title: 'Lillies',
+price: '£POA',
+images: [
+'https://iili.io/BZj121f.png',
+'https://iili.io/fdDbGwv.png'
+],
+desc: 'Dimensions: 60cm x 50cm.'
+};
+
+productsMap[27] = {
+id: 27,
+title: 'Sunflowers',
+price: '£POA',
+images: [
+'https://iili.io/BZh5I29.png',
+'https://iili.io/fdDbGwv.png'
+],
+desc: 'Dimensions: 45cm x 35cm Including Frame.'
+};
+
+productsMap[28] = {
+id: 28,
+title: 'Rabbi Leaning On Walking Stick',
+price: '£POA',
+images: [
+'https://iili.io/BZjwM41.png',
+'https://iili.io/fdDbGwv.png'
+],
+desc: 'Dimensions: 40cm x 30cm.'
+};
+
+productsMap[29] = {
+id: 29,
+title: 'Safed',
+price: '£POA',
+images: [
+'https://iili.io/BZMTqoF.png',
+'https://iili.io/fdDbGwv.png'
+],
+desc: 'Dimensions: 70cm x 50cm Including Frame.'
+};
+
+productsMap[30] = {
+id: 30,
+title: 'Boats Moored By The Jetty',
+price: '£POA',
+images: [
+'https://iili.io/CGTWtoB.jpg',
+'https://iili.io/fdDbGwv.png'
+],
+desc: 'Dimensions: 45cm x 36cm.'
+};
+
+// Final products array sorted by id
+const products = Object.keys(productsMap).map(k=>productsMap[k]).sort((a,b)=>a.id-b.id);
+
+// Render cards
 products.forEach(prod=>{
 const card = document.createElement('article');
 card.className = 'card';
@@ -657,7 +658,8 @@ document.body.style.overflow='hidden';
 function updateModal(){
 modalImage.src = currentProd.images[imgIdx];
 modalTitle.textContent = currentProd.title;
-modalDesc.textContent = currentProd.desc;
+// allow HTML in the description (we control the content)
+modalDesc.innerHTML = currentProd.desc;
 }
 document.getElementById('closeModal').onclick = hideModal;
 document.getElementById('modalCloseBtn').onclick = hideModal;
