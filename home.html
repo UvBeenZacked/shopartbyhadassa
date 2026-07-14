@@ -33,14 +33,18 @@ z-index: -1;
 }
 
 .footer {
+position: fixed; /* keep footer visible at the bottom of the viewport */
+left: 0;
+right: 0;
+bottom: 0;
 background: #222;
 color: var(--muted);
-padding: 32px 0 24px 0;
-margin-top: 42px;
+padding: 20px 0;
 text-align: center;
 font-size: 15px;
 letter-spacing: 0.04em;
 border-top: 1.5px solid #e6e2f4;
+z-index: 50; /* below modal (modal-backdrop uses z-index:1000) */
 }
 .footer a {
 color: var(--accent);
@@ -52,8 +56,8 @@ transition: color 0.2s;
 color: #6c35d2;
 text-decoration: none;
 }
-body{font-family:Inter,Arial,sans-serif;background:var(--bg);margin:0;overflow-x:hidden;}
-.container{max-width:1200px;margin:0 auto;padding:32px;}
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);margin:0;overflow-x:hidden;padding-bottom:140px;} /* ensure page content doesn't hide behind fixed footer */
+.container{max-width:1200px;margin:0 auto;padding:32px;padding-bottom:0;} /* container retains normal padding; body has bottom padding */
 
 /* HEADER STYLES */
 .header-black {
@@ -174,6 +178,8 @@ gap:8px;
 padding:8px 12px;
 flex:1;
 }
+/* reduce bottom padding on small screens so footer doesn't cover too much */
+body{padding-bottom:110px;}
 }
 </style>
 
